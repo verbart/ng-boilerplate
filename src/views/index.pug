@@ -1,0 +1,18 @@
+doctype html
+html(ng-app='app')
+  head
+    base(href='/')
+
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='./style.css')
+
+    script(defer src='./bundle.js')
+
+    title ngBoilerplate
+  body
+
+    include ./templates/components/navbar.pug
+
+    ui-view
