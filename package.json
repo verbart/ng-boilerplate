@@ -11,7 +11,7 @@
     "url": "https://github.com/verbart/ng-boilerplate/issues"
   },
   "scripts": {
-    "serve": "NODE_ENV=development ./node_modules/.bin/gulp",
+    "start": "NODE_ENV=development ./node_modules/.bin/gulp",
     "build": "NODE_ENV=production ./node_modules/.bin/gulp build"
   },
   "devDependencies": {
@@ -26,13 +26,14 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-clean-css": "^2.0.12",
     "gulp-if": "^2.0.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.1",
     "gulp-pug": "^3.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.5.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
