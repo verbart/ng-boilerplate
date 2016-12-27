@@ -6,11 +6,11 @@ function router($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('main', {
       url: "/",
-      templateUrl: "templates/pages/main.html"
+      templateUrl: "pages/main.html"
     })
     .state('404', {
       url: "/404",
-      templateUrl: "templates/pages/errors/404.html"
+      templateUrl: "pages/errors/404.html"
     })
 }
 
