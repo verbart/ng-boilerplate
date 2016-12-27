@@ -65,7 +65,7 @@ gulp.task('scripts', function() {
         })
         .pipe(source('bundle.js'))
         .pipe(buffer())
-        .pipe(gulpIf(!isDevelopment, uglify()))
+        .pipe(gulpIf(!isDevelopment, uglify({mangle: false})))
         .pipe(gulp.dest('./public'));
 });
 
