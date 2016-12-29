@@ -1,5 +1,11 @@
 # Boilerplate for projects based on AngularJS
 
+### Examples of projects based on it
+
+- *https://github.com/verbart/just-calendar*
+
+---
+
 ### Contains
 
 - **Tools**
