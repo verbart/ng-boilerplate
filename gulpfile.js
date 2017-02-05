@@ -1,9 +1,4 @@
 const gulp = require('gulp');
-const babelify = require('babelify');
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
-const buffer = require('vinyl-buffer');
-const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const stylus = require('gulp-stylus');
 const cleanCSS = require('gulp-clean-css');
@@ -17,6 +12,7 @@ const del = require('del');
 const gutil = require('gulp-util');
 const pug = require('gulp-pug');
 const tinypng = require('gulp-tinypng-nokey');
+const webpack = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -52,21 +48,19 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('./public'))
 });
 
-gulp.task('scripts', function() {
-    return browserify({
-        entries: './src/scripts/app.js',
-        debug: isDevelopment
-    })
-        .transform(babelify, {presets: ['es2015']})
-        .bundle()
-        .on('error', function(error) {
-            gutil.log(gutil.colors.red('Error: ' + error), '\n', error.codeFrame);
-            this.emit('end');
-        })
-        .pipe(source('bundle.js'))
-        .pipe(buffer())
-        .pipe(gulpIf(!isDevelopment, uglify({mangle: false})))
-        .pipe(gulp.dest('./public'));
+gulp.task('scripts', function(done) {
+    return webpack(require('./webpack.config.js'), function(err, stats) {
+        if(err) throw new gutil.PluginError('webpack', err);
+
+        gutil.log('[scripts]', stats.toString({
+            colors: gutil.colors.supportsColor,
+            chunks: false,
+            hash: false,
+            version: false
+        }));
+
+        done();
+    });
 });
 
 gulp.task('fonts', function () {

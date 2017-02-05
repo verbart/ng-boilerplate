@@ -9,7 +9,7 @@
 ### Contains
 
 - **Tools**
-  - `Babel + Browserify + Uglify` - for build scripts
+  - `Webpack + Babel + Uglify` - for build scripts
   - `Pug (Jade)` - for preprocessing views
   - `Stylus` - for preprocessing styles
   - `PostCSS Autoprefixer` - for adding prefixes to css properties
