@@ -6,13 +6,12 @@ html(ng-app='app')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    link(rel='stylesheet', href='./style.css')
+    link(rel='stylesheet', href='./css/style.css')
 
-    script(defer src='./bundle.js')
+    script(defer src='./js/bundle.js')
 
     title ngBoilerplate
   body
-
-    include components/navbar.pug
+    include components/navbar
 
     ui-view
