@@ -2,6 +2,7 @@
 
 ### Examples of projects based on it
 
+- *https://github.com/verbart/avarcom*
 - *https://github.com/verbart/just-calendar*
 
 ---
