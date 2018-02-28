@@ -10,8 +10,8 @@
 ### Contains
 
 - **Tools**
-  - `Webpack + Babel + Uglify` - for build scripts
-  - `Pug (Jade)` - for preprocessing views
+  - `Browserify + Babel` - for build scripts
+  - `Pug` - for preprocessing views
   - `Stylus` - for preprocessing styles
   - `PostCSS Autoprefixer` - for adding prefixes to css properties
   - `Tinypng` - for optimize images
