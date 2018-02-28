@@ -12,7 +12,9 @@ const del = require('del');
 const gutil = require('gulp-util');
 const pug = require('gulp-pug');
 const tinypng = require('gulp-tinypng-nokey');
-const webpack = require('webpack');
+const bro = require('gulp-bro');
+const babelify = require('babelify');
+const uglify = require('gulp-uglify');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -51,19 +53,17 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('./public/css'))
 });
 
-gulp.task('scripts', function(done) {
-  return webpack(require('./webpack.config.js'), function(err, stats) {
-    if(err) throw new gutil.PluginError('webpack', err);
-
-    gutil.log('[scripts]', stats.toString({
-      colors: gutil.colors.supportsColor,
-      chunks: false,
-      hash: false,
-      version: false
-    }));
-
-    done();
-  });
+gulp.task('scripts', function () {
+  return gulp.src('./src/app.js')
+    .pipe(bro({
+      debug: isDevelopment,
+      transform: [
+        babelify.configure({ presets: ['es2015'] }),
+      ]
+    }))
+    .pipe(gulpIf(!isDevelopment, uglify({ mangle: false })))
+    .pipe(rename('bundle.js'))
+    .pipe(gulp.dest('./public/js'));
 });
 
 gulp.task('watch', function () {
